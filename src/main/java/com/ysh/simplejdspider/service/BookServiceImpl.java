@@ -39,6 +39,7 @@ public class BookServiceImpl implements BookService {
             //滚动到页尾
             log.info("正在获取第 " + pageNum + " 页的数据...");
             long start = System.currentTimeMillis();
+            // 网页滚动到底部，默认是只有30条数据，需要滚动到才会显示
             ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,30000);");
             try {
                 Thread.sleep(1000);
