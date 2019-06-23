@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysh.simplejdspider.dao.BookDao">
+
+    <insert id="addBook">
+        INSERT INTO book
+        VALUES (0, #{name}, #{price}, #{pictureUrl})
+    </insert>
+    <insert id="addBooks">
+        INSERT INTO book VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (0,#{item.name},#{item.price},#{item.pictureUrl})
+        </foreach>
+    </insert>
+    <select id="selectBook" resultType="Book">
+        SELECT id, name, price
+        FROM book
+        WHERE id = #{id}
+    </select>
+</mapper>
